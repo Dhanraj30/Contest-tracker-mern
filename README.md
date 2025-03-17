@@ -167,11 +167,11 @@ contest-tracker/
 
 ## Screenshots
 
-### Homepage (Light Theme)
-![Homepage](screenshots/homepage-light.png)
-
 ### Homepage (Dark Theme)
-![Homepage Dark](screenshots/homepage-dark.png)
+![Homepage Dark](https://github.com/Dhanraj30/Contest-tracker-mern/blob/main/Screenshot%202025-03-17%20184546.png)
+
+### Homepage (Light Theme)
+![Homepage](s)
 
 ### Admin Dashboard
 ![Admin Dashboard](screenshots/admin-dashboard.png)
