@@ -18,7 +18,7 @@
 - **Frontend**: React, Tailwind CSS, Lucide Icons
 - **Backend**: Node.js, Express
 - **Database**: MongoDB (using Mongoose)
-- **API**: CLIST API for fetching contest data and Youtube api key to fetch vedio solution
+- **API**: CLIST API for fetching contest data and Youtube api key to fetch video solution
 - **Other Libraries**: Axios (API requests)
 
 ## Prerequisites
@@ -54,7 +54,7 @@ Create a `.env` file in the `server` directory with the following environment va
 ```env
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/contest-tracker
-YOUTUBE_API_KEY
+YOUTUBE_API_KEY=api key
 ```
 
 ### 3. Set Up the Frontend
