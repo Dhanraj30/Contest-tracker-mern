@@ -1,6 +1,7 @@
 const axios = require('axios');
 const Contest = require('../models/Contest');
 const SolutionLink = require('../models/SolutionLink');
+require('dotenv').config();
 
 const fetchYouTubeVideos = async (playlistId) => {
   try {
