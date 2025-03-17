@@ -57,10 +57,6 @@ MONGO_URI=mongodb://localhost:27017/contest-tracker
 YOUTUBE_API_KEY
 ```
 
-- `MONGO_URI`: Your MongoDB connection string (local or Atlas).
-- `ADMIN_EMAIL`: The email address that will have admin privileges.
-- `JWT_SECRET`: A secure key for signing JWT tokens (generate a unique, strong key).
-
 ### 3. Set Up the Frontend
 Navigate to the `client` directory and install dependencies:
 
