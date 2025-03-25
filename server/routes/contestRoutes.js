@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { getContests, bookmarkContest, addSolutionLink } = require('../controllers/contestController');
+const { getContests, bookmarkContest, addSolutionLink, searchContests } = require('../controllers/contestController');
 
 router.get('/contests', getContests);              // Fetch all contests
 router.post('/contests/bookmark/:id', bookmarkContest);     // Bookmark a contest
 router.post('/contests/solution-link', addSolutionLink);         // Add YouTube link (admin)
 // New endpoints for updating and deleting solution links
+router.get('/contests/search', searchContests); // Add search route
 router.put('/contests/solution-link/:id', async (req, res) => {
     try {
       const { youtubeLink } = req.body;

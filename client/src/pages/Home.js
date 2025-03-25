@@ -17,6 +17,7 @@ function Home() {
   const [selectedSolution, setSelectedSolution] = useState(null);
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState("upcoming");
+  const [searchQuery, setSearchQuery] = useState(""); // Add search query state
 
   const fetchContests = async () => {
     try {
@@ -118,7 +119,10 @@ function Home() {
     );
   }
 
-  const filteredContests = contests.filter((contest) => platformFilter[contest.platform]);
+  const filteredContests = contests
+    .filter((contest) => platformFilter[contest.platform])
+    .filter((contest) => contest.name.toLowerCase().includes(searchQuery.toLowerCase())); // Filter by search query
+
   const upcomingContests = filteredContests.filter((c) => new Date(c.startTime) > new Date());
   const pastContests = filteredContests.filter((c) => new Date(c.startTime) <= new Date());
 
@@ -146,6 +150,17 @@ function Home() {
           </div>
         </div>
       </header>
+
+      {/* Search Field */}
+      <div className="container mt-4">
+        <input
+          type="text"
+          placeholder="Search contests by title"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full px-4 py-2 border border-border rounded-md bg-background/60 backdrop-blur focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+        />
+      </div>
 
       {/* Main Content */}
       <main className="container py-6">

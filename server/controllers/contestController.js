@@ -118,8 +118,8 @@ const getContests = async (req, res) => {
         try {
           const response = await axios.get('https://clist.by/api/v4/contest/', {
             params: {
-              username: process.env.username,
-              api_key: process.env.api_key,
+              username: process.env.USERNAME,
+              api_key: process.env.API_KEY,
               start__gte: pastMonth.toISOString(),
               start__lte: futureMonth.toISOString(),
               resource_id: Number(resourceId),
@@ -170,7 +170,7 @@ const getContests = async (req, res) => {
         endTime: new Date(contest.end),
         url: contest.href || '',
         bookmarked: false,
-        clistId: contest.id, // Add unique identifier from CLIST
+        clistId: contest.id, 
       };
     });
 
@@ -192,7 +192,7 @@ const getContests = async (req, res) => {
 
     await syncSolutionLinks();
 
-    const savedContests = await Contest.find();
+    const savedContests = await Contest.find();//.sort({ startTime: -1 }).limit(15); // Limit to latest 15 contests
     const solutionLinks = await SolutionLink.find();
     console.log('Fetched contests from DB:', savedContests);
     console.log('Fetched solution links:', solutionLinks);
@@ -233,9 +233,21 @@ const addSolutionLink = async (req, res) => {
   }
 };
 
+const searchContests = async (req, res) => {
+  const { title } = req.query;
+  try {
+    const contests = await Contest.find({ name: new RegExp(title, 'i') });
+    res.json(contests);
+  } catch (error) {
+    console.error('Error in searchContests:', error.message);
+    res.status(500).json({ error: 'Internal server error', details: error.message });
+  }
+};
+
 module.exports = {
   getContests,
   bookmarkContest,
   addSolutionLink,
   syncSolutionLinks,
+  searchContests,
 };
